@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes decorative-frame-sweep {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(140%);
+  }
+}
+
+@keyframes hero-message-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+@keyframes member-header-border {
+  to {
+    stroke-dashoffset: -2000;
+  }
+}
+
+@keyframes member-header-border-color {
+  to {
+    stroke: #080b62;
+  }
+}
+
+.member-header-border-runner {
+  stroke-dasharray: 310 900;
+  stroke-dashoffset: 0;
+  animation: member-header-border 5s linear infinite;
+}
+
+.member-header-border-runner rect {
+  stroke: #fcfcfc;
+  animation: member-header-border-color 3s steps(1, end) infinite alternate;
+}
+
+.decorative-frame--sweeping {
+  animation: decorative-frame-sweep 3s ease-in-out forwards;
+}
+
+
+
+.hero-image--sweeping {
+  animation: decorative-frame-sweep 3s ease-in-out forwards;
+}
+
+.hero-message-enter {
+  animation: hero-message-enter 2s ease-in both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .decorative-frame--sweeping,
+  .hero-image--sweeping,
+  .hero-message-enter,
+  .member-header-border-runner {
+    display: none;
+    transition: none;
+  }
+}
