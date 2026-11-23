@@ -1,3 +1,11 @@
+import { Suspense } from "react";
+import { io } from "next/cache";
+
+async function CopyrightYear() {
+  await io();
+  return <>{new Date().getFullYear()}</>;
+}
+
 const Footer = () => {
   return (
     <footer id="top" className="w-full bg-blue-900 px-4 py-10 text-white sm:px-8">
@@ -46,7 +54,7 @@ const Footer = () => {
       <div className="mt-8 flex min-h-12 max-w-7xl ml-15 
       items-center justify-center border-t border-white pt-5 text-xs">
         <span className="font-bold text-white">
-          © {new Date().getFullYear()} Made by Thai Nguyen
+        © <Suspense fallback={null}><CopyrightYear /></Suspense> Made by Thai Nguyen
         </span>
       </div>
     </footer>
